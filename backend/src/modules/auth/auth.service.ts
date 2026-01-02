@@ -2,6 +2,7 @@ import { type UserDetail } from "./auth.schema.js";
 import UserModel from './auth.model.js'
 import { AppError, AuthenticationError, ConflictError, DatabaseError } from "../../errors/custom.errors.js";
 import { signToken } from "../utils/jwt.js";
+import { hashPassword, verifyPassword } from "../utils/password.js";
 
 export async function handleSignUp(details: UserDetail) {
     try {
@@ -9,7 +10,8 @@ export async function handleSignUp(details: UserDetail) {
         if (findUser) {
             throw new ConflictError("User Already Exist");
         }
-        await new UserModel(details).save();
+        const hash = await hashPassword(details.password);
+        await new UserModel({ email: details.email, password: hash }).save();
 
     } catch (error) {
         console.log(error);
@@ -27,11 +29,15 @@ export async function handleSignUp(details: UserDetail) {
 
 export async function handleSignIn(details: UserDetail) {
     try {
-        const getUser = await UserModel.findOne(details);
-        if (getUser) {
-            return signToken({ email: getUser.email, _id: getUser._id.toString() })
+        const getUser = await UserModel.findOne({ email: details.email });
+        if (!getUser) {
+            throw new AuthenticationError("Invalid Credentials");
         }
-        throw new AuthenticationError("Invalid Credentials");
+        const checkPassword = await verifyPassword(details.password, getUser.password || "");
+        if (!checkPassword) {
+            throw new AuthenticationError("Username or Password is Incorrect")
+        }
+        return signToken({ email: getUser.email, _id: getUser._id.toString() })
     } catch (error) {
         if (error instanceof AppError) {
             throw error
