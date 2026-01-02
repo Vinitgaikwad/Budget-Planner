@@ -1,6 +1,9 @@
-import express from 'express';
+import dotenv from 'dotenv'
+dotenv.config({ path: './src/config/.env' })
 
-const app = express();
+import serverConnection from "./server/serverConnection.js";
 
-const x: number = 4
-console.log(x);
+serverConnection().catch((err: Error) => {
+    console.log("Server Connection Failed");
+    process.exit(1);
+});
