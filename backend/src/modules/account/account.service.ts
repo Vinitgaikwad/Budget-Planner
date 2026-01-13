@@ -1,40 +1,112 @@
-import { AppError, DatabaseError, ValidationError } from "../../errors/custom.errors.js";
-import type { AccountItem, Accounts } from "./account.schema.js";
-import accountModel from "./account.model.js";
+import { date } from "zod";
+import { AppError, DatabaseError, NotFoundError } from "../../errors/custom.errors.js";
 import { consoleError } from "../tests/consoleError.js";
+import accountModel from "./account.model.js";
+import type { AccountItem } from "./account.schema.js";
 
-export async function handleNewAccounts(accounts: AccountItem[], uid: string) {
+export async function handleAddAccount(account: AccountItem, uid: string) {
     try {
-        if (accounts.length == 0 || !uid) {
-            throw new ValidationError("Invaild Data Entries")
+        const result = await accountModel.findOneAndUpdate(
+            {
+                uid: uid,
+                "accounts.acc_type": { $ne: account.acc_type }
+            },
+            {
+                $setOnInsert: { uid },
+                $push: { accounts: { acc_type: account.acc_type, date: new Date(), amount: account.amount } }
+            },
+            {
+                upsert: true,
+                new: true
+            }
+        );
+
+        if (!result) {
+            throw new NotFoundError("Account Already Exist");
         }
-
-        const newAccounts = new accountModel({
-            uid,
-            accounts: accounts.map((account) => {
-                return {
-                    acc_type: account.acc_type,
-                    date: Date(),
-                    amount: account.amount
-                }
-            })
-        });
-
-        await newAccounts.save();
+        return result;
     } catch (error) {
         consoleError(error);
-
         if (error instanceof AppError) {
             throw error
         }
 
-        throw new DatabaseError("Internal Error Occured");
+        throw new DatabaseError();
     }
 }
 
-export async function handleEditAccount(account: AccountItem) {
+export async function handleEditAccount(account: AccountItem, uid: string) {
+    try {
+        const result = await accountModel.findOneAndUpdate(
+            {
+                uid: uid,
+                "accounts.acc_type": { $eq: account.acc_type }
+            },
+            {
+                $set: {
+                    "accounts.$.amount": account.amount,
+                    "accounts.$.date": new Date()
+                }
+            },
+            {
+                new: true
+            }
+        );
 
+        if (!result) {
+            throw new NotFoundError("Account Not Found");
+        }
+
+        return result;
+    } catch (error) {
+        consoleError(error);
+        if (error instanceof AppError) {
+            throw error
+        }
+
+        throw new DatabaseError();
+    }
 }
-/*
-    add in account, edit the account
-*/
+
+export async function handleDeleteAccount(account: AccountItem, uid: string) {
+    try {
+        const result = await accountModel.findOneAndUpdate(
+            { uid },
+            {
+                $pull: {
+                    accounts: { acc_type: account.acc_type }
+                }
+            },
+            { new: true }
+        );
+
+        if (!result) {
+            throw new NotFoundError("Account not found");
+        }
+
+        return result;
+    } catch (error) {
+        consoleError(error);
+        if (error instanceof AppError) throw error;
+        throw new DatabaseError();
+    }
+}
+
+
+export async function handleGetAccounts(uid: string) {
+    try {
+        const result = await accountModel.findOne({ uid: uid });
+
+        if (!result) {
+            throw new NotFoundError("Accounts Not Found");
+        }
+        return result
+    } catch (error) {
+        consoleError(error);
+        if (error instanceof AppError) {
+            throw error
+        }
+
+        throw new DatabaseError();
+    }
+}

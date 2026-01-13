@@ -3,7 +3,7 @@ import { ACCOUNT_Roles } from "./account.enum.js";
 
 export const accountItemSchema = zod.object({
     acc_type: zod.enum(ACCOUNT_Roles),
-    date: zod.coerce.date(),
+    date: zod.coerce.date().optional(),
     amount: zod.number().int().positive()
 });
 
