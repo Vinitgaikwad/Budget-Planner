@@ -1,4 +1,3 @@
-import { date } from "zod";
 import { AppError, DatabaseError, NotFoundError } from "../../errors/custom.errors.js";
 import { consoleError } from "../tests/consoleError.js";
 import accountModel from "./account.model.js";
