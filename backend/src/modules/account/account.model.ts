@@ -13,5 +13,6 @@ const AccountSchema = new mongoose.Schema({
 },
     { timestamps: true }
 );
+AccountSchema.index({ uid: 1 }, { unique: true });
 
 export default mongoose.model("account", AccountSchema);
