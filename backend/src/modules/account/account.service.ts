@@ -1,4 +1,4 @@
-import { AppError, DatabaseError, NotFoundError } from "../../errors/custom.errors.js";
+import { AppError, ConflictError, DatabaseError, NotFoundError } from "../../errors/custom.errors.js";
 import { consoleError } from "../tests/consoleError.js";
 import accountModel from "./account.model.js";
 import type { AccountItem } from "./account.schema.js";
@@ -21,7 +21,7 @@ export async function handleAddAccount(account: AccountItem, uid: string) {
         );
 
         if (!result) {
-            throw new NotFoundError("Account Already Exist");
+            throw new ConflictError("Account Already Exist");
         }
         return result;
     } catch (error) {
@@ -97,7 +97,7 @@ export async function handleGetAccounts(uid: string) {
         const result = await accountModel.findOne({ uid: uid });
 
         if (!result) {
-            throw new NotFoundError("Accounts Not Found");
+            throw new NotFoundError("No Accounts Found, Add Accounts");
         }
         return result
     } catch (error) {
