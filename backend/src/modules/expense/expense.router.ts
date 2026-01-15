@@ -7,6 +7,6 @@ import { addExpense, deleteExpense, editExpense, getExpenses } from "./expense.c
 export const expenseRouter = Router();
 
 expenseRouter.post('/new-expenses', validateAuth(), validate(expenseItem), addExpense);
-expenseRouter.put('/new-expenses', validateAuth(), validate(expenseItem), editExpense);
-expenseRouter.delete('/new-expenses', validateAuth(), validate(expenseItem), deleteExpense);
-expenseRouter.post('/new-expenses', validateAuth(), validate(expenseItem), getExpenses);
+expenseRouter.put('/edit-expenses', validateAuth(), validate(expenseItem), editExpense);
+expenseRouter.delete('/delete-expenses', validateAuth(), validate(expenseItem), deleteExpense);
+expenseRouter.post('/get-expenses', validateAuth(), validate(expenseItem), getExpenses);
