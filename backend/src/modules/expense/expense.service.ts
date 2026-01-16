@@ -14,7 +14,7 @@ export async function handleAddExpense(expense: ExpenseItem, uid: string) {
                     uid: uid
                 },
                 $push: {
-                    expenses: { expense_type: expense.expense_type, amount: expense.amount, date: new Date() }
+                    expenses: { expense_type: expense.expense_type, amount: expense.amount, date: new Date(), time: expense.time }
                 }
             },
             {
@@ -47,14 +47,14 @@ export async function handleEditExpense(expense: ExpenseItem, uid: string) {
             {
                 $set: {
                     "expenses.$.amount": expense.amount,
-                    "expenses.$.date": new Date()
+                    "expenses.$.date": new Date(),
+                    "expenses.$.time": expense.time
                 }
             },
             {
                 new: true
             }
         );
-
 
         if (!expenses) {
             throw new NotFoundError("Expense Not Found");

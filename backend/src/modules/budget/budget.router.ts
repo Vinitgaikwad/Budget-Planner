@@ -6,7 +6,7 @@ import { addBudget, deleteBudget, editBudget, getBudgets } from "./budget.contro
 
 export const budgetRouter = Router();
 
-budgetRouter.post('/new-budgets', validateAuth(), validate(budgetItem), addBudget);
-budgetRouter.post('/edit-budgets', validateAuth(), validate(budgetItem), editBudget);
-budgetRouter.post('/delete-budgets', validateAuth(), validate(budgetItem), deleteBudget);
-budgetRouter.post('/get-budgets', validateAuth(), validate(budgetItem), getBudgets);
+budgetRouter.post('/new', validateAuth(), validate(budgetItem), addBudget);
+budgetRouter.put('/edit', validateAuth(), validate(budgetItem), editBudget);
+budgetRouter.delete('/delete', validateAuth(), validate(budgetItem), deleteBudget);
+budgetRouter.post('/get', validateAuth(), validate(budgetItem), getBudgets);

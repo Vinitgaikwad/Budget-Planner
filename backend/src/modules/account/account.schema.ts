@@ -1,10 +1,12 @@
 import zod from "zod"
 import { ACCOUNT_Roles } from "./account.enum.js";
+import { TIME_TYPES } from "../../types/time.js";
 
 export const accountItemSchema = zod.object({
     acc_type: zod.enum(ACCOUNT_Roles),
     date: zod.coerce.date().optional(),
-    amount: zod.number().int().positive()
+    amount: zod.number().int().positive(),
+    time: zod.enum(TIME_TYPES).optional()
 });
 
 export const accountSchema = zod.object({

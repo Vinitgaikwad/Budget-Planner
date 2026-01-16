@@ -12,7 +12,7 @@ export async function handleAddAccount(account: AccountItem, uid: string) {
             },
             {
                 $setOnInsert: { uid },
-                $push: { accounts: { acc_type: account.acc_type, date: new Date(), amount: account.amount } }
+                $push: { accounts: { acc_type: account.acc_type, date: new Date(), amount: account.amount, time: account.time } }
             },
             {
                 upsert: true,
@@ -25,7 +25,6 @@ export async function handleAddAccount(account: AccountItem, uid: string) {
         }
         return result;
     } catch (error) {
-        consoleError(error);
         if (error instanceof AppError) {
             throw error
         }
@@ -44,7 +43,8 @@ export async function handleEditAccount(account: AccountItem, uid: string) {
             {
                 $set: {
                     "accounts.$.amount": account.amount,
-                    "accounts.$.date": new Date()
+                    "accounts.$.date": new Date(),
+                    "accounts.$.time": account.time
                 }
             },
             {

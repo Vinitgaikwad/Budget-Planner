@@ -6,7 +6,7 @@ import { createAccounts, deleteAccounts, editAccounts, getAccounts } from "./acc
 
 export const accountRouter = Router();
 
-accountRouter.post('/new-accounts', validateAuth(), validate(accountItemSchema), createAccounts);
-accountRouter.put('/edit-accounts', validateAuth(), validate(accountItemSchema), editAccounts);
-accountRouter.delete('/delete-accounts', validateAuth(), validate(accountItemSchema), deleteAccounts);
-accountRouter.post('/get-accounts', validateAuth(), getAccounts);
+accountRouter.post('/new', validateAuth(), validate(accountItemSchema), createAccounts);
+accountRouter.put('/edit', validateAuth(), validate(accountItemSchema), editAccounts);
+accountRouter.delete('/delete', validateAuth(), validate(accountItemSchema), deleteAccounts);
+accountRouter.post('/get', validateAuth(), getAccounts);
