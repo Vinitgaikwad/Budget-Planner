@@ -6,15 +6,20 @@ export async function handleAddExpense(expense: ExpenseItem, uid: string) {
     try {
         const expenses = await expenseModel.findOneAndUpdate(
             {
-                uid,
-                "expenses.expense_type": { $ne: expense.expense_type }
+                uid
             },
             {
                 $setOnInsert: {
                     uid: uid
                 },
                 $push: {
-                    expenses: { expense_type: expense.expense_type, amount: expense.amount, date: new Date(), time: expense.time }
+                    expenses: {
+                        expense_type: expense.expense_type,
+                        acc_type: expense.acc_type,
+                        amount: expense.amount,
+                        date: new Date(),
+                        time: expense.time
+                    }
                 }
             },
             {
@@ -42,13 +47,15 @@ export async function handleEditExpense(expense: ExpenseItem, uid: string) {
         const expenses = await expenseModel.findOneAndUpdate(
             {
                 uid,
-                "expenses.expense_type": { $eq: expense.expense_type }
+                "expenses.expense_type": { $eq: expense.expense_type },
+                "expenses.acc_type": { $eq: expense.acc_type }
             },
             {
                 $set: {
                     "expenses.$.amount": expense.amount,
                     "expenses.$.date": new Date(),
-                    "expenses.$.time": expense.time
+                    "expenses.$.time": expense.time,
+                    "expenses.$.acc_type": expense.acc_type
                 }
             },
             {
@@ -75,7 +82,8 @@ export async function handleDeleteExpense(expense: ExpenseItem, uid: string) {
         const expenses = await expenseModel.findOneAndUpdate(
             {
                 uid,
-                "expenses.expense_type": { $eq: expense.expense_type }
+                "expenses.expense_type": { $eq: expense.expense_type },
+                "expenses.acc_type": { $eq: expense.acc_type }
             },
             {
                 $pull: {
