@@ -1,4 +1,4 @@
-import { MainNavbar } from "@/shared/components";
+import { Footer, MainNavbar } from "@/shared/components";
 import { Outlet } from "react-router-dom";
 
 export function MainLayout() {
@@ -6,6 +6,7 @@ export function MainLayout() {
         <>
             <MainNavbar></MainNavbar>
             <Outlet></Outlet>
+            <Footer></Footer>
         </>
     );
 }
