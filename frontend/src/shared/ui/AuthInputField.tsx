@@ -8,8 +8,8 @@ export type AuthInputFieldProps = {
 export function AuthInputField({ label, id, type = "text" }: AuthInputFieldProps) {
     return (
         <div className="mb-6 flex flex-col">
-            <label htmlFor={id} className="text-gray-400 text-sm">{label}</label>
-            <input className="w-full border border-gray-400 rounded-sm focus:border-brand-300 focus:outline-none px-2 py-1" id={id} type={type} />
+            <label htmlFor={id} className="text-brand-400 text-sm">{label}</label>
+            <input className="w-full border border-[2px] border-brand-100 rounded-sm focus:border-brand-300 focus:outline-none px-2 py-1" id={id} type={type} />
         </div>
     );
 }

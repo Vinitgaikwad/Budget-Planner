@@ -12,13 +12,13 @@ export function LandingNavbar() {
                     </NavLink>
                 </div>
                 <div className="hidden md:flex justify-between items-center flex-row flex-auto  ">
-                    <p className="text-gray-400">Features</p>
-                    <p className="text-gray-400">How It Works</p>
-                    <p className="text-gray-700">Pricing</p>
-                    <p className="text-gray-400">Security</p>
+                    <p className="text-brand-300">Features</p>
+                    <p className="text-brand-300">How It Works</p>
+                    <p className="text-brand-500">Pricing</p>
+                    <p className="text-brand-300">Security</p>
                 </div>
                 <div className="flex-1 flex pr-4 md:pr-0">
-                    <button className="text-md text-gray-600 font-thin border border-gray-400 ml-auto px-3 py-1 rounded-md -translate-y-[4px]">
+                    <button className="text-md text-brand-600 font-thin border border-brand-400 ml-auto px-3 py-1 rounded-md -translate-y-[4px]">
                         <NavLink to="/login">Sign In</NavLink>
                     </button>
                 </div>
