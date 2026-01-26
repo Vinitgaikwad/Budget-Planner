@@ -1,4 +1,4 @@
-import { AuthInputField } from "@/shared/ui";
+import { AuthInputField, PrimaryButton } from "@/shared/ui";
 
 export function LoginCard() {
     return (
@@ -6,9 +6,7 @@ export function LoginCard() {
             <p className="text-brand-400 text-md mb-4 flex justify-center">User Login</p>
             <AuthInputField type="email" label="Email" id="email"></AuthInputField>
             <AuthInputField type="password" label="Password" id="password"></AuthInputField>
-            <button className="bg-brand-500 text-white p-2 rounded-sm">
-                Sign In
-            </button>
+            <PrimaryButton disable={false} label="Sign In"></PrimaryButton>
         </div>
     );
 }
