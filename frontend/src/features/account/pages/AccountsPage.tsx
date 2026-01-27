@@ -1,3 +1,4 @@
+import { AccountStatus } from "../components/AccountStatus";
 import { AccountSummary } from "../components/AccountSummary";
 import { AddAccounts } from "../components/AddAccounts";
 import { ExpenseSummary } from "../components/ExpenseSummary";
@@ -11,6 +12,9 @@ export function AccountsPage() {
             </div>
             <div className="h-full">
                 <AddAccounts></AddAccounts>
+            </div>
+            <div className="col-span-2 bg-gray-100">
+                <AccountStatus></AccountStatus>
             </div>
         </div>
     );
