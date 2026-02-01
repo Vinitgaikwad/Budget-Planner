@@ -1,9 +1,12 @@
+import { SubHeading } from "@/shared/ui";
+
 export function ExpenseSummary() {
     return (
         <div className="bg-white rounded-lg shadow-md p-5 border-l-4 border-red-500">
-            <h2 className="text-sm font-semibold text-gray-700 mb-4">
-                Expense Summary
-            </h2>
+
+            <div className="mb-4">
+                <SubHeading heading={"Expense Summary"}></SubHeading>
+            </div>
 
             <div className="flex justify-between items-end">
                 <div>

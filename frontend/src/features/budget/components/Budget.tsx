@@ -1,6 +1,6 @@
 import { numberComma } from "@/shared/utils";
 
-export type AccountProps = {
+export type BudgetProps = {
     shadow: string
     accountType: string,
     current_amount: number,
@@ -8,13 +8,13 @@ export type AccountProps = {
     expense_amount: number,
 }
 
-export function Account(AccountProps: AccountProps) {
+export function Budget(AccountProps: BudgetProps) {
     return (
         <div className={`bg-white p-4 rounded-lg border border-gray-200 shadow-sm ${AccountProps.shadow}`}>
             <h2 className="text-sm font-semibold text-gray-700 mb-4">{AccountProps.accountType}</h2>
 
             <div className="mb-4">
-                <p className="text-xs text-gray-500">Current Amount</p>
+                <p className="text-xs text-gray-500">Remaining Budget</p>
                 <p className="text-2xl font-semibold text-brand-600">$ {numberComma(AccountProps.current_amount)}</p>
             </div>
 

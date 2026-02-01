@@ -1,10 +1,12 @@
-import { PrimaryButton, SecondaryButton, SelectOptions, TertiaryButton } from "@/shared/ui";
+import { PrimaryButton, SecondaryButton, SelectOptions, SubHeading, TertiaryButton } from "@/shared/ui";
 import { ACCOUNT_Roles, TIME_TYPES } from "@/types";
 
-export function AddAccounts() {
+export function AddBudgets() {
     return (
         <div className="h-full py-5 px-8 rounded-md bg-white shadow-lg border-l-4 border-blue-400">
-            <h1 className="text-gray-800 font-semibold text-sm mb-6">Create Account</h1>
+            <div className="mb-4">
+                <SubHeading heading={"Create Budget"}></SubHeading>
+            </div>
 
             <div className="flex flex-col mb-4">
                 <label htmlFor="" className="text-xs font-semibold text-gray-400">Amount to add</label>
