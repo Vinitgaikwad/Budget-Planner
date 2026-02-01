@@ -4,14 +4,14 @@ import Logo from "../../../assets/logo.png"
 export function MainNavbar() {
     return (
         <nav className="w-[100%] flex justify-center min-w-md">
-            <div className="flex justify-between items-center shadow-md shadow-gray-300 w-full md:px-24 lg:px-32">
+            <div className="flex justify-between items-center shadow-md shadow-brand-200 w-full md:px-24 lg:px-32">
 
                 <div className="flex-1">
                     <NavLink to='/'>
                         <img src={Logo} alt="logo" className="w-16" />
                     </NavLink>
                 </div>
-                <div className="hidden md:flex justify-between items-center flex-row flex-auto  ">
+                <div className="hidden md:flex justify-between items-center flex-row flex-auto text-md">
                     <NavLink
                         to="/dashboard/account"
                         className={({ isActive }) =>
@@ -40,7 +40,7 @@ export function MainNavbar() {
                     </NavLink>
 
                     <NavLink
-                        to="/dashboard/analytic"
+                        to="/dashboard/analytics"
                         className={({ isActive }) =>
                             isActive ? "text-brand-600" : "text-gray-400"
                         }

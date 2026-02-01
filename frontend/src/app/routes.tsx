@@ -4,6 +4,8 @@ import { LandingPageLayout } from "./layout/LandingPageLayout";
 import { LoginPage, SignUpPage } from "@/features/auth";
 import { AccountsPage } from "@/features/account";
 import { BudgetPage } from "@/features/budget";
+import { ExpensePage } from "@/features/expense";
+import { AnalyticsPage } from "@/features/analytics";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +18,15 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/budget',
                 element: <BudgetPage />
-            }
+            },
+            {
+                path: "/dashboard/expense",
+                element: <ExpensePage />
+            },
+            {
+                path: "/dashboard/analytics",
+                element: <AnalyticsPage />
+            },
         ]
     },
     {
