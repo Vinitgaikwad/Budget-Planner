@@ -5,7 +5,7 @@ import { ExpenseSummary } from "../components/ExpenseSummary";
 
 export function AccountsPage() {
     return (
-        <div className="grid md:grid-cols-2 px-36 py-10 bg-brand-200 md:gap-6">
+        <div className="grid md:grid-cols-2 px-36 py-10 bg-cyan-50 md:gap-6">
             <div className="grid gap-6">
                 <AccountSummary></AccountSummary>
                 <ExpenseSummary></ExpenseSummary>
