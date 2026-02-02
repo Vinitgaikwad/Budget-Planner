@@ -1,10 +1,11 @@
 export type SubHeadingProps = {
-    heading: string
+    heading: string,
+    color?: string
 }
 
-export function SubHeading({ heading }: SubHeadingProps) {
+export function SubHeading({ heading, color = "text-gray-700" }: SubHeadingProps) {
     return (
-        <h2 className="text-sm font-semibold text-gray-700">
+        <h2 className={`text-sm font-semibold ${color}`}>
             {heading}
         </h2>
     )

@@ -10,7 +10,7 @@ export type BudgetProps = {
 
 export function Budget(AccountProps: BudgetProps) {
     return (
-        <div className={`bg-white p-4 rounded-lg border border-gray-200 shadow-sm ${AccountProps.shadow}`}>
+        <div className={`bg-white p-4 rounded-lg border border-gray-200 shadow-md ${AccountProps.shadow}`}>
             <h2 className="text-sm font-semibold text-gray-700 mb-4">{AccountProps.accountType}</h2>
 
             <div className="mb-4">
