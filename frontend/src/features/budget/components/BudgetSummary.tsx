@@ -29,7 +29,7 @@ export function BudgetSummary() {
                         <p className="text-lg font-semibold text-brand-700">$4,400</p>
                     </div>
                     <div className="w-full bg-gray-100 rounded-full h-3.5 shadow-md">
-                        <div className="bg-brand-500 h-full rounded-full" style={{ width: "45%" }}>
+                        <div className="bg-brand-500 shadow-md shadow-brand-300 h-full rounded-full" style={{ width: "45%" }}>
                         </div>
                     </div>
                 </div>

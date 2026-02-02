@@ -24,7 +24,7 @@ export function Expense(AccountProps: BudgetProps) {
                     <p className="text-sm font-semibold text-brand-700">$4,400</p>
                 </div>
                 <div className="w-full bg-gray-100 rounded-full h-3.5 shadow-md">
-                    <div className="bg-red-400 h-full rounded-full shadow-md shadow-red-300" style={{ width: "45%" }}>
+                    <div className="bg-brand-400 h-full rounded-full shadow-md shadow-brand-300" style={{ width: "45%" }}>
                     </div>
                 </div>
             </div>

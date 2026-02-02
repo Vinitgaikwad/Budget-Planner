@@ -1,5 +1,5 @@
 import { PrimaryButton, SelectOptions, SubHeading, TertiaryButton } from "@/shared/ui";
-import { ACCOUNT_Roles, TIME_TYPES } from "@/types";
+import { ACCOUNT_Roles, EXPENSE_TYPES, TIME_TYPES } from "@/types";
 
 export function AddExpenses() {
     return (
@@ -16,7 +16,7 @@ export function AddExpenses() {
             <div className="flex mb-6 gap-4 items-start justify-between">
                 <SelectOptions label="Time" optionArr={TIME_TYPES}></SelectOptions>
                 <SelectOptions label="Account Type" optionArr={ACCOUNT_Roles}></SelectOptions>
-                <SelectOptions label="Expense Type" optionArr={ACCOUNT_Roles}></SelectOptions>
+                <SelectOptions label="Expense Type" optionArr={EXPENSE_TYPES}></SelectOptions>
             </div>
 
             <div className="flex justify-between mb-2">

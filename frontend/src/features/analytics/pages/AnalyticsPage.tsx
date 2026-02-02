@@ -1,7 +1,17 @@
 export function AnalyticsPage() {
     return (
         <div className="">
-            analytics
+            {/* 
+            budget, expense and account
+            
+            -- Expense Pie Chart
+            -- Saving Graph 
+            -- Budget vs Expense 
+            -- Income Graph  
+            -- All Filter
+
+            
+            */}
         </div>
     )
 }
