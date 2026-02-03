@@ -1,3 +1,5 @@
+import Chart from "../components/Chart";
+
 export function AnalyticsPage() {
     return (
         <div className="">
@@ -12,6 +14,8 @@ export function AnalyticsPage() {
 
             
             */}
+
+            <Chart></Chart>
         </div>
     )
 }
