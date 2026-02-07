@@ -20,6 +20,9 @@ export function AnalyticsPage() {
                 pie chart
             </div>
             <div className="">
+                <nav>
+                    hello Yello
+                </nav>
                 budget vs something
             </div>
         </div>
